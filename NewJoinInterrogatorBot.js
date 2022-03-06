@@ -63,6 +63,7 @@ bot.on('messageCreate', async message => {
     }
 });
 
+var memberToSent = {};
 bot.on('guildMemberAdd', member => {
     console.log("---someone joined---");
     idToMember[member.id] = member;
@@ -77,12 +78,15 @@ bot.on('guildMemberAdd', member => {
                     + "B.  " + memberToRandomChoices[member.id][1] + "\r\n"
                     + "C.  " + memberToRandomChoices[member.id][2] + "\r\n"
                     + "D.  " + memberToRandomChoices[member.id][3]);
-    member.send({ embeds: [embeded] });
-    member.disableCommunicationUntil(Date.now() + 14400000, "新人进discord要先答题").then((member) => {
+    if(memberToSent[member.id] == undefined) {
+        member.send({ embeds: [embeded] });
+        memberToSent[member.id] = true;
+    }
+    member.disableCommunicationUntil(Date.now() + 144000, "新人进discord要先答题").then((member) => {
         memberToTimer[member.id] = setTimeout(function(){
             console.log("time is up");
             member.kick("答题时间超时");
-        }, 14400000);
+        }, 144000);
     });
 });
 
