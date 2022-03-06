@@ -78,6 +78,7 @@ bot.on('guildMemberAdd', member => {
                     + "B.  " + memberToRandomChoices[member.id][1] + "\r\n"
                     + "C.  " + memberToRandomChoices[member.id][2] + "\r\n"
                     + "D.  " + memberToRandomChoices[member.id][3]);
+    console.log(memberToSent[member.id]);
     if(memberToSent[member.id] == undefined) {
         member.send({ embeds: [embeded] });
         memberToSent[member.id] = true;
