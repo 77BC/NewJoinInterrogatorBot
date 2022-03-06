@@ -82,11 +82,11 @@ bot.on('guildMemberAdd', member => {
         member.send({ embeds: [embeded] });
         memberToSent[member.id] = true;
     }
-    member.disableCommunicationUntil(Date.now() + 144000, "新人进discord要先答题").then((member) => {
+    member.disableCommunicationUntil(Date.now() + 14400000, "新人进discord要先答题").then((member) => {
         memberToTimer[member.id] = setTimeout(function(){
             console.log("time is up");
             member.kick("答题时间超时");
-        }, 144000);
+        }, 14400000);
     });
 });
 
