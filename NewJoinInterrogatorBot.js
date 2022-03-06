@@ -73,12 +73,11 @@ bot.on('guildMemberAdd', member => {
     memberToRandomChoices[member.id] = shuffleArray(memberToRandomQuestionAnswerEntry[member.id][1].split(" "));
     const embeded = new MessageEmbed()
                     .setColor('#00ffff')
-                    .setDescription(memberToRandomQuestionAnswerEntry[member.id][0] + "   请回复A/B/C/D" + "\r\n" 
+                    .setDescription(memberToRandomQuestionAnswerEntry[member.id][0] + " 请回复A/B/C/D" + "\r\n" 
                     + "A.  " + memberToRandomChoices[member.id][0] + "\r\n"
                     + "B.  " + memberToRandomChoices[member.id][1] + "\r\n"
                     + "C.  " + memberToRandomChoices[member.id][2] + "\r\n"
                     + "D.  " + memberToRandomChoices[member.id][3]);
-    console.log(memberToSent);
     if(memberToSent[member.id] == undefined) {
         member.send({ embeds: [embeded] });
         memberToSent[member.id] = true;
@@ -119,4 +118,5 @@ function cleanUpMap(id){
     delete memberToRandomQuestionAnswerEntry[id];
     delete memberToRandomChoices[id];
     delete memberToChances[id];
+    delete memberToSent[id];
 }
