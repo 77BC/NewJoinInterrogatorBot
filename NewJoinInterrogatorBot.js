@@ -68,7 +68,7 @@ bot.on('messageCreate', async message => {
             }
             message.reply("❌错误，还剩一次机会❌");
         }
-    } else {
+    } else if(message.author.username != "NewJoinInterrogatorBot"){
        if(content.includes("bad bot")) {
             message.reply(badBotReplies[Math.floor(Math.random() * badBotReplies.length)]);
           }  else if(content.includes("good bot")) {
